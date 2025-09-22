@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Simple HTML Demo</title>
+
+<!-- Small, inline CSS for clarity -->
+<style>
+body { font-family: system-ui, Arial, sans-serif; line-height: 1.5; padding: 24px; max-width: 900px; margin: auto; }
+header { margin-bottom: 20px; }
+nav a { margin-right: 12px; text-decoration: none; color: #0366d6; }
+.card { border: 1px solid #ddd; padding: 12px; border-radius: 8px; margin: 12px 0; }
+button { padding: 8px 12px; border-radius: 6px; cursor: pointer; }
+footer { color: #666; font-size: 0.9rem; margin-top: 28px; }
+</style>
+</head>
+<body>
+
+<header>
+<h1>Welcome — Simple HTML Demo</h1>
+<p>A tiny page to show headings, lists, links, a form, and a bit of JavaScript.</p>
+<nav>
+<a href="#about">About</a>
+<a href="#examples">Examples</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<main>
+<section id="about" class="card">
+<h2>About this page</h2>
+<p>This demonstrates semantic HTML elements: <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, and <code>&lt;footer&gt;</code>.</p>
+</section>
+
+<section id="examples" class="card">
+<h2>Examples</h2>
+
+<h3>Ordered list</h3>
+<ol>
+<li>Write HTML structure</li>
+<li>Add styles with CSS</li>
+<li>Bring interactivity with JavaScript</li>
+</ol>
+
+<h3>Small form</h3>
+<form id="contact" onsubmit="return handleSubmit(event)">
+<label>
+Your name: <br/>
+<input type="text" id="name" name="name" placeholder="Type your name" required>
+</label>
+<br/><br/>
+<label>
+Message: <br/>
+<textarea id="message" name="message" rows="3" placeholder="Hi..." required></textarea>
+</label>
+<br/><br/>
+<button type="submit">Send</button>
+</form>
+</section>
+
+<section class="card">
+<h2>Interactive demo</h2>
+<p>Click the button to see JavaScript in action:</p>
+<button id="greetBtn">Say hello</button>
+<div id="greetOutput" style="margin-top:10px;"></div>
+</section>
+</main>
+
+<footer>
+<p>Made with ❤️ — open this file in any browser to try it out.</p>
+</footer>
+
+<!-- Simple JavaScript -->
+<script>
+// Button greet
+document.getElementById('greetBtn').addEventListener('click', () => {
+const out = document.getElementById('greetOutput');
+const now = new Date();
+out.textContent = `Hello! The time is ${now.toLocaleTimeString()}.`;
+});
+
+// Basic form handler (prevents page reload)
+function handleSubmit(event) {
+event.preventDefault();
+const name = document.getElementById('name').value.trim();
+const message = document.getElementById('message').value.trim();
+alert(`Thanks, ${name}! Your message was received:\n\n"${message}"`);
+// optionally, reset form:
+event.target.reset();
+return false;
+}
+</script>
+</body>
+</html>
